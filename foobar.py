@@ -26,4 +26,9 @@ if __name__ == "__main__":
     else:
         print("Input number greater than 0: ")
         maximum = int(input())
-    foo_bar(1, maximum)
+    if maximum < 1:
+        print("Incorrect input! Number must be greater than 0.")
+    elif maximum >= G_RECUSRION_LIMIT:
+        print("Sorry, too big value. Please use numbers up to {:d}. It is recursion limit.".format(G_RECUSRION_LIMIT))
+    else:
+        foo_bar(1, maximum)
