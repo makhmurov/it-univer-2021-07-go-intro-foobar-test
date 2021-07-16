@@ -2,22 +2,16 @@
 
 import sys
 
-G_RECUSRION_LIMIT = 2**11
-
-sys.setrecursionlimit(G_RECUSRION_LIMIT)
-
 MSG_FOO = "Foo"
 MSG_BAR = "Bar"
 
-def foo_bar(counter, maximum):
-    if counter > maximum:
-        return
-    if counter % 3 == 0:
+def check_item(number):
+    if number % 3 == 0:
         msg = MSG_BAR
     else:
         msg = MSG_FOO
-    print('{:d} {:s}'.format(counter, msg))
-    foo_bar(counter + 1, maximum)
+    print('{:d} {:s}'.format(number, msg))
+    return None
 
 if __name__ == "__main__":
     maximum = 0
@@ -26,9 +20,5 @@ if __name__ == "__main__":
     else:
         print("Input number greater than 0: ")
         maximum = int(input())
-    if maximum < 1:
-        print("Incorrect input! Number must be greater than 0.")
-    elif maximum >= G_RECUSRION_LIMIT:
-        print("Sorry, too big value. Please use numbers up to {:d}. It is recursion limit.".format(G_RECUSRION_LIMIT))
-    else:
-        foo_bar(1, maximum)
+    map_it = filter(check_item, range(1, maximum + 1))
+    list(map_it)
